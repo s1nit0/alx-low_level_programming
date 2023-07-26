@@ -1,54 +1,28 @@
 #include "main.h"
 
 /**
- * infinite_add -  adds two numbers
- * @n1: first number
- * @n2: second number
- * @r: result
- * @size_r: result lenght
- * Return: sum
+ * _strcat - function that concatenates
+ *          two strings.
  *
+ * @dest: pointer to destnation input
+ * @src: pointer to source input
+ *
+ * Return: pointer to resulting string @dest
 */
 
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+char *_strcat(char *dest, char *src)
 {
-	/* local variable declaration */
-	int i = 0, j = 0, k, l = 0, f, s, d = 0;
+	int c, c2;
 
-	while (n1[i] != '\0')
-		i++;
-	while (n2[j] != '\0')
-		j++;
-	if (i > j)
-		l = i;
-	else
-		l = j;
-	if (l + 1 > size_r)
-		return (0);
-	r[l] = '\0';
-	for (k = l - 1 ; k >= 0 ; k--)
-	{
-		i--;
-		j--;
-		if (i >= 0)
-			f = n1[i] - '0';
-		else
-			f = 0;
-		if (j >= 0)
-			s = n2[j] - '0';
-		else
-			s = 0;
-		r[k] = (f + s + d) % 10 + '0';
-		d = (f + s + d) / 10;
-	}
-	if (d == 1)
-	{
-		r[l + 1] = '\0';
-		if (l + 2 > size_r)
-			return (0);
-		while (l-- >= 0)
-			r[l + 1] = r[l];
-		r[0] = d + '0';
-	}
-	return (r);
+	c = 0;
+	/*find the size of dest array*/
+	while (dest[c])
+		c++;
+
+	/* iterate through each src array value without the null byte*/
+	for (c2 = 0; src[c2] ; c2++)
+		/*append src[c2] to dest[c] while overwritting the null byte in dest*/
+		dest[c++] = src[c2];
+
+	return (dest);
 }
