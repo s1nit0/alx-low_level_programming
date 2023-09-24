@@ -1,1 +1,0 @@
-Bit manipulation README file
